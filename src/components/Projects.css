@@ -1,0 +1,148 @@
+.projects {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 96px 32px;
+  text-align: center;
+}
+
+.projects-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin: 0 0 10px;
+}
+
+.projects-heading {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.projects .curly-divider {
+  width: 120px;
+  height: 18px;
+  margin: 22px auto;
+  display: block;
+}
+
+.projects-note {
+  color: var(--text-soft);
+  max-width: 50ch;
+  margin: 0 auto 48px;
+}
+
+.garden {
+  position: relative;
+  height: 440px;
+  margin: 80px 0 32px;
+}
+
+.garden,
+.garden * {
+  cursor: none;
+}
+
+.garden-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.garden-cursor svg {
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.drop {
+  animation: garden-drip 0.7s ease-in infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.drop-2 {
+  animation-delay: 0.16s;
+}
+
+.drop-3 {
+  animation-delay: 0.32s;
+}
+
+@keyframes garden-drip {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.6);
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(9px, 16px) scale(1);
+  }
+}
+
+.garden-ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 46px;
+  height: 3px;
+  background: var(--border);
+}
+
+.garden-plant {
+  position: absolute;
+  bottom: 46px;
+  transform: translateX(-50%);
+}
+
+.flower {
+  appearance: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.flower--dimmed svg {
+  opacity: 0.55;
+}
+
+.flower-label {
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  max-width: 130px;
+}
+
+.projects-more {
+  margin-top: 48px;
+}
+
+@media (max-width: 600px) {
+  .projects {
+    padding: 72px 22px;
+  }
+
+  .garden {
+    height: 340px;
+    margin-top: 60px;
+  }
+
+  .garden-plant svg {
+    width: 118px;
+    height: 236px;
+  }
+
+  .flower-label {
+    font-size: 0.72rem;
+    max-width: 96px;
+  }
+}

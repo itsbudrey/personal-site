@@ -1,0 +1,139 @@
+.cube-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 14, 10, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 24px;
+}
+
+.cube-modal {
+  position: relative;
+  background: var(--surface);
+  border-radius: 28px;
+  padding: 32px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+.cube-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  appearance: none;
+  border: none;
+  background: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.cube-heading {
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+}
+
+.cube-hint {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  margin-bottom: 28px;
+}
+
+.cube-scene {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.cube-viewport {
+  width: 200px;
+  height: 200px;
+  perspective: 700px;
+  touch-action: none;
+  cursor: grab;
+}
+
+.cube-viewport:active {
+  cursor: grabbing;
+}
+
+.cube {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+}
+
+.cube-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: var(--sand);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  backface-visibility: hidden;
+}
+
+.cube-face:nth-child(1) {
+  background: var(--lime);
+}
+.cube-face:nth-child(2) {
+  background: var(--blush);
+}
+.cube-face:nth-child(3) {
+  background: var(--sand);
+}
+.cube-face:nth-child(4) {
+  background: var(--cream);
+}
+
+.cube-face-title {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cocoa);
+  opacity: 0.7;
+}
+
+.cube-face-body {
+  color: var(--cocoa);
+  font-size: 0.95rem;
+}
+
+.cube-face-link {
+  color: var(--cocoa);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.cube-arrow {
+  appearance: none;
+  border: none;
+  background: var(--sand);
+  color: var(--cocoa);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--spring);
+}
+
+.cube-arrow:hover {
+  transform: scale(1.1);
+}

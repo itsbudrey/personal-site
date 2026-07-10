@@ -18,13 +18,33 @@ export default function Flower({
     if (clickable) onClick?.(e);
   }
 
+  const wrapperVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  };
+
+  const stemVariants = {
+    hidden: { scaleY: 0 },
+    show: { scaleY: 1, transition: { delay, duration: 1, ease: [0.34, 1.4, 0.4, 1] } },
+  };
+
+  const bloomVariants = {
+    hidden: { opacity: 0, scale: 0.35 },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: { delay: delay + 0.65, type: 'spring', stiffness: 240, damping: 13 },
+    },
+  };
+
   return (
     <Wrapper
       type={clickable ? 'button' : undefined}
       className={`flower${dimmed ? ' flower--dimmed' : ''}`}
       onClick={handleClick}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      variants={wrapperVariants}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true, amount: 0.4 }}
       whileHover={clickable ? { scale: 1.06 } : {}}
       whileTap={clickable ? { scale: 0.96 } : {}}
@@ -37,10 +57,7 @@ export default function Flower({
         viewBox="0 0 160 320"
         width="170"
         height="340"
-        initial={{ scaleY: 0 }}
-        whileInView={{ scaleY: 1 }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ delay, duration: 1, ease: [0.34, 1.4, 0.4, 1] }}
+        variants={stemVariants}
         style={{ transformOrigin: 'bottom center', overflow: 'visible' }}
       >
         <path
@@ -53,13 +70,7 @@ export default function Flower({
         <path d="M68 208 Q34 198 26 166 Q60 168 72 194 Z" fill="var(--lime)" opacity="0.9" />
         <path d="M90 250 Q124 242 132 212 Q98 212 86 240 Z" fill="var(--lime)" opacity="0.9" />
 
-        <motion.g
-          initial={{ opacity: 0, scale: 0.35 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ delay: delay + 0.65, type: 'spring', stiffness: 240, damping: 13 }}
-          style={{ transformOrigin: '80px 44px' }}
-        >
+        <motion.g variants={bloomVariants} style={{ transformOrigin: '80px 44px' }}>
           {[0, 60, 120, 180, 240, 300].map((angle) => (
             <ellipse
               key={angle}
